@@ -1,0 +1,16 @@
+{
+  "name": "geoutil",
+  "version": "1.0.0",
+  "description": "Location based utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "geolib": "^2.0.17",
+    "lodash": "^3.10.0",
+    "request-promise": "^0.4.2"
+  }
+}
