@@ -7,7 +7,7 @@ var addresses = [
 ];
 
 
-util.getCoordinates(addresses, function(result){
+util.getCoordinates('211 E. 7th Street, Austin, TX', function(result){
   console.dir(result);
 }) ;
 /*

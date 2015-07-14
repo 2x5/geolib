@@ -1,17 +1,18 @@
 var rp  = require('request-promise');
  
-function getCoords(addressArr, cb) {
+function getCoords(address, cb) {
 
+  var addresses = [].concat( address );
   var options = {
     uri : 'http://www.datasciencetoolkit.org/street2coordinates',
     method : 'POST',
-    body: JSON.stringify(addressArr),
+    body: JSON.stringify(addresses),
     transform : 
         function (resp) { 
           var out = [];
           var data = JSON.parse(resp); 
 
-          addressArr.forEach(function(key, n) { 
+          addresses.forEach(function(key, n) { 
             // console.log("%d) key: %s)", n, key);
             var coords = (data[key] === null) ?  {} : 
                 {lat: data[key].latitude, lng: data[key].longitude}; 
