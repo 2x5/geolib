@@ -1,12 +1,14 @@
 var rp  = require('request-promise');
+var geo = require('geolib');
  
-function getCoords(address, cb) {
+module.exports.getCoordinates = function getCoords(address, cb) {
 
   var addresses = [].concat( address );
   var options = {
     uri : 'http://www.datasciencetoolkit.org/street2coordinates',
     method : 'POST',
     body: JSON.stringify(addresses),
+    timeout: 5000,
     transform : 
         function (resp) { 
           var out = [];
@@ -24,16 +26,7 @@ function getCoords(address, cb) {
   rp(options).then(cb).catch(console.error);
 }
 
-function getMilesBetween(from, to) {
-
-  to     = [ { lat: 30.578205, lng:-98.38287 } ];
-  from   = { lat: 30.4762,   lng: -97.579279 };
-  var result = geo.getDistance(from, to);
-
-  console.dir(result);
-  console.log("Distance is %d miles", result[0].distance);
-  return result[0].distance;
+module.exports.milesBetween = function getMilesBetween(from, to) {
+  return geo.getDistance(from, to);
 }
 
-module.exports.getCoordinates  = getCoords;
-module.exports.getMilesBetween = getMilesBetween;

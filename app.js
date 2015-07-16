@@ -6,19 +6,16 @@ var addresses = [
     '100 Main Street, Anytown, OH 88939'
 ];
 
-
 util.getCoordinates('211 E. 7th Street, Austin, TX', function(result){
   console.dir(result);
 }) ;
-/*
- 2300 Butler National Dr, Pflugerville, TX, United States at 30.4762,  -97.579279
- 302 Green Acres Dr, Marble Falls, TX, United States at      30.578205,-98.38287
 
-var to     = { latitude: 30.578205, longitude:-98.38287 } 
+util.getCoordinates(addresses, function(result){
+  console.dir(result);
+}) ;
+
 var from   = { latitude: 30.4762,   longitude: -97.579279 }
+var to     = { latitude: 30.578205, longitude:-98.38287 } 
 
-var result = util.getMilesBetween(from, to);
-
-console.dir(result)
-console.log("Distance is %d miles", result)
-*/
+var result = util.milesBetween(from, to);
+console.log("Distance is %d miles", (result * 0.000621371192).toFixed(2));
